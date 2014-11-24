@@ -1,7 +1,8 @@
-require 'shoulda/callback/matchers/version'
+require_relative 'matchers/version'
+require_relative 'matchers/rails_version_helper'
 
 if defined?(RSpec)
-  require 'shoulda/callback/matchers/integrations/rspec'
+  require_relative 'matchers/integrations/rspec'
 else
-  require 'shoulda/callback/matchers/integrations/test_unit'
+  require_relative 'matchers/integrations/test_unit'
 end

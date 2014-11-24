@@ -16,14 +16,20 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  s.extensions    = 'ext/mkrf_conf.rb'
 
-  s.add_dependency('activesupport', '>= 4.0.0')
+  s.add_dependency('activesupport',           '>= 3')
 
-  s.add_development_dependency('appraisal',   '~> 0.5.0')
+  s.add_development_dependency('appraisal',   '~> 0.5')
   s.add_development_dependency('aruba')
-  s.add_development_dependency('bourne',      '~> 1.3.0')
-  s.add_development_dependency('bundler',     '>= 1.1.0')
-  s.add_development_dependency('rails',       '>= 3.0')
-  s.add_development_dependency('rake',        '~> 10.0.0')
-  s.add_development_dependency('rspec-rails', '~> 2.12.0')
+  s.add_development_dependency('bundler',     '>= 1.1')
+  s.add_development_dependency('rails',       '>= 3')
+  s.add_development_dependency('rake',        '~> 10')
+  s.add_development_dependency('rspec-rails', '~> 2')
+  
+  if RUBY_ENGINE == 'rbx'
+    s.add_development_dependency "rubysl", "~> 2"
+    s.add_development_dependency "rubysl-test-unit", '~> 2'
+    s.add_development_dependency "racc",   "~> 1.4"
+  end
 end
